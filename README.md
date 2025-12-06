@@ -192,7 +192,7 @@ ansible_ssh_common_args=-o StrictHostKeyChecking=no
 - `[managed_hosts]` - группа хостов (можно иметь несколько групп)
 - `managed1` - имя хоста в инвентаре (локальное имя, не обязательно реальное)
 - `ansible_host=localhost` - IP адрес или FQDN реального хоста
-- `ansible_port=2222` - порт SSH (映射 из docker-compose)
+- `ansible_port=2222` - порт SSH (из docker-compose)
 - `ansible_user=ansible` - пользователь для подключения
 - `ansible_ssh_private_key_file` - путь к приватному SSH ключу
 - `ansible_python_interpreter` - путь к интерпретатору Python на управляемом хосте
@@ -483,8 +483,3 @@ docker-compose up -d
 - [Docker Documentation](https://docs.docker.com/)
 
 ---
-
-**Автор:** DevOps Lab  
-**Версия:** 1.0  
-**Дата:** 2025-12-06  
-**Язык:** Русский
