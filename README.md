@@ -85,87 +85,19 @@
 
 **Ожидаемый результат:** три директории с файлами, созданные на управляемом хосте
 
----
+## Скрины
 
-## 9. Полезные команды для отладки
+1. Базовое подключение
 
-### Проверка подключения к контейнеру
-```bash
-docker-compose ps
-docker logs ansible-managed-host
-```
+2. Информация о ядрах CPU управляемого хоста
 
-### Подключение к контейнеру по SSH с дебаг информацией
-```bash
-ssh -v -i ~/.ssh/ansible_key -p 2222 ansible@localhost
-```
+3. Проверка свободного места на диске
 
-### Перезагрузка контейнера
-```bash
-docker-compose restart
-```
+4. Список пользователей
 
-### Удаление контейнера и образа
-```bash
-docker-compose down
-docker-compose rm -f
-```
+5. Изменение временной зоны на UTC
 
-### Запуск playbook с повышенной вербозностью
-```bash
-ansible-playbook -i inventory.ini playbook.yml -vvv
-```
+6. Работа с файлами
 
-### Синтаксическая проверка playbook
-```bash
-ansible-playbook -i inventory.ini playbook.yml --syntax-check
-```
 
----
-
-## 10. Часто возникающие проблемы
-
-### Проблема: "Permission denied (publickey)"
-**Решение:**
-```bash
-# Проверьте права на приватный ключ
-chmod 600 ~/.ssh/ansible_key
-
-# Убедитесь, что публичный ключ скопирован правильно
-docker exec ansible-managed-host cat /home/ansible/.ssh/authorized_keys
-```
-
-### Проблема: "No module named 'jinja2'"
-**Решение:**
-```bash
-pip3 install jinja2
-ansible-inventory -i inventory.ini --list
-```
-
-### Проблема: "Connection refused" на порту 2222
-**Решение:**
-```bash
-# Проверьте, запущен ли контейнер
-docker ps
-
-# Пересоздайте контейнер
-docker-compose down
-docker-compose up -d
-```
-
-### Проблема: "UNREACHABLE! => {msg: 'Failed to connect to the host via ssh'"
-**Решение:**
-1. Проверьте SSH подключение вручную
-2. Убедитесь, что SSH сервис запущен в контейнере
-3. Проверьте права на файлы в `.ssh`
-
----
-
-## Дополнительные ресурсы
-
-- [Официальная документация Ansible](https://docs.ansible.com/)
-- [Ansible Best Practices](https://docs.ansible.com/ansible/latest/tips_tricks/index.html)
-- [Ansible Modules Index](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/index.html)
-- [Docker Documentation](https://docs.docker.com/)
-
----
+Ansible — это инструмент для автоматизации администрирования и DevOps-задач: настройки серверов, установки ПО, управления конфигурациями и деплоя приложений. Проще говоря - Ansible позволяет описать нужное состояние системы (что должно быть установлено и как настроено), а затем автоматически привести серверы к этому состоянию.
